@@ -18,6 +18,14 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
         get_human_age(15, 15) == [1, 1]
         get_human_age(24, 24) == [2, 2]
     """
-    # TODO: Implement this function
-    # Write your tests first, then implement the logic
-    return [0, 0]
+    if type(cat_age) is not int or type(dog_age) is not int:
+        raise TypeError("cat_age and dog_age must be integers")
+
+    def convert(age: int, years_per_extra_human_year: int) -> int:
+        if age < 15:
+            return 0
+        if age < 24:
+            return 1
+        return 2 + (age - 24) // years_per_extra_human_year
+
+    return [convert(cat_age, 4), convert(dog_age, 5)]
