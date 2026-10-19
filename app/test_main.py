@@ -28,7 +28,9 @@ from app import main
         "negative-ages",
     ],
 )
-def test_get_human_age_boundaries(cat_age, dog_age, expected):
+def test_get_human_age_boundaries(
+    cat_age: int, dog_age: int, expected: list[int]
+) -> None:
     assert main.get_human_age(cat_age, dog_age) == expected
 
 
@@ -55,6 +57,8 @@ def test_get_human_age_boundaries(cat_age, dog_age, expected):
         "dog-bool",
     ],
 )
-def test_get_human_age_rejects_non_integer_arguments(cat_age, dog_age):
+def test_get_human_age_rejects_non_integer_arguments(
+    cat_age: object, dog_age: object
+) -> None:
     with pytest.raises(TypeError):
         main.get_human_age(cat_age, dog_age)
